@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import ClickCounter from "./component/HoverCounter";
+import Counter from "./component/Counter";
+import "./App.css";
+import HoverCounter from "./component/HoverCounter";
+import Contex from "./component/Contex";
+import react, { Component } from "react";
+import themeContext from "./context/Context";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = { theme: "dark" };
+  render() {
+    const { theme } = this.state;
+    return (
+      <div className="App">
+        <themeContext.Provider value={{ theme: theme }}>
+          <Contex theme={theme} />
+        </themeContext.Provider>
+      </div>
+    );
+  }
 }
 
 export default App;
